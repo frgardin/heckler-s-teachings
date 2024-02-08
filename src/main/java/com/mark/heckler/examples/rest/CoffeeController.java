@@ -6,15 +6,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/coffees")
 class CoffeeController {
     private final CoffeeRepository coffeeRepository;
-
 
     public CoffeeController(CoffeeRepository coffeeRepository) {
         this.coffeeRepository = coffeeRepository;
@@ -39,7 +36,7 @@ class CoffeeController {
     ResponseEntity<Coffee> putCoffee(@PathVariable String id,
                                      @RequestBody Coffee coffee) {
 
-        return (coffeeRepository.existsById(id)) ?
+        return coffeeRepository.existsById(id) ?
                 new ResponseEntity<>(coffeeRepository.save(coffee), HttpStatus.OK):
                 new ResponseEntity<>(coffeeRepository.save(coffee), HttpStatus.CREATED) ;
     }
