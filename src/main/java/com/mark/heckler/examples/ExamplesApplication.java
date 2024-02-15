@@ -23,5 +23,4 @@ public class ExamplesApplication {
 		return new Droid();
 	}
 
-
 }
